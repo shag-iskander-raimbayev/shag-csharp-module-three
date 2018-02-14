@@ -8,8 +8,10 @@ namespace ArrayInCSharp
 {
     class Program
     {
+        static int counter = 0;
         static void Main(string[] args)
         {
+            
             Random random = new Random();
 
             #region Introduction to Arrays
@@ -21,15 +23,15 @@ namespace ArrayInCSharp
             //// Двумерный и трехмерный массив
             //int[,] twoDimArray = new int[5, 2]
             //{
-            //    {1, 2 }, 
-            //    {3, 4 }, 
-            //    {5, 6 }, 
-            //    {7, 8 }, 
+            //    {1, 2 },
+            //    {3, 4 },
+            //    {5, 6 },
+            //    {7, 8 },
             //    {8, 10 }
             //};
 
             //int[,,] threeDimArray = new int[2, 2, 2];
-            //int [][] juggedArray = new int[5][];
+            //int[][] juggedArray = new int[5][];
 
             //for (int i = 0; i < 5; i++)
             //{
@@ -42,35 +44,30 @@ namespace ArrayInCSharp
             //    Console.WriteLine();
             //}
 
-            // 3 7
-            // 1 6
-            // 0 10
 
-            // default(int) = 0
-
-            //int maxLengthSubarrayIndex = default(int), 
+            //int maxLengthSubarrayIndex = default(int),
             //    maxLengthSubarrayValue = default(int),
-            //    maxSumSubarrayIndex = default(int), 
+            //    maxSumSubarrayIndex = default(int),
             //    maxSumSubarrayValue = default(int);
 
             //int[][] juggerArrayTwo = new int[random.Next(3, 7)][];
 
-            //for(int i = 0; i < juggerArrayTwo.Length; i++)
+            //for (int i = 0; i < juggerArrayTwo.Length; i++)
             //{
             //    juggerArrayTwo[i] = new int[random.Next(1, 6)];
-            //    if(juggerArrayTwo[i].Length > maxLengthSubarrayValue)
+            //    if (juggerArrayTwo[i].Length > maxLengthSubarrayValue)
             //    {
             //        maxLengthSubarrayValue = juggerArrayTwo[i].Length;
             //        maxLengthSubarrayIndex = i;
             //    }
             //    int subarraySum = 0;
-            //    for (int j = 0; j< juggerArrayTwo[i].Length; j++)
+            //    for (int j = 0; j < juggerArrayTwo[i].Length; j++)
             //    {
             //        juggerArrayTwo[i][j] = random.Next(1, 10);
             //        Console.Write(juggerArrayTwo[i][j] + " ");
             //        subarraySum += juggerArrayTwo[i][j];
             //    }
-            //    if(subarraySum > maxSumSubarrayValue)
+            //    if (subarraySum > maxSumSubarrayValue)
             //    {
             //        maxSumSubarrayValue = subarraySum;
             //        maxSumSubarrayIndex = i;
@@ -93,9 +90,8 @@ namespace ArrayInCSharp
             //    Console.WriteLine();
             //}
 
-            //int[] array = new int[10];
 
-            //for(int i = 0; i < 10; i++)
+            //for (int i = 0; i < 10; i++)
             //{
             //    array[i] = random.Next(1, 10);
             //    Console.Write(array[i] + " ");
@@ -112,9 +108,11 @@ namespace ArrayInCSharp
 
             #endregion
 
-            #region Binary Search Task
+            #region Section A 
             /*
-            int[] array = new int[random.Next(50, 100)];
+            #region Binary Search Task
+            
+            int[] array = new int[2000000];
 
             for (int i = 0; i < array.Length; i++)
             {
@@ -123,12 +121,22 @@ namespace ArrayInCSharp
 
             Array.Sort(array);
 
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.WriteLine("Index = " + i + " Value = " + array[i]);
-            }
+            Console.WriteLine("Index 1 999 999 and value = " + array[1999999]);
 
             int valueToFind = Int32.Parse(Console.ReadLine());
+
+            //for(int i = 0; i< array.Length; i++)
+            //{
+            //    counter++;
+            //    if (array[i] == valueToFind)
+            //    {               
+            //        Console.WriteLine("Found at index = " + i);
+            //        break;
+            //    }
+            //}
+            //Console.WriteLine("Total iterations = " + counter);
+            /*
+
             int index = BinarySearch(array, 0, array.Length - 1, valueToFind);
 
             if (index != -1)
@@ -140,9 +148,13 @@ namespace ArrayInCSharp
                 Console.WriteLine("Not found");
             }
             */
-            #endregion
+
+            // #endregion
+            #endregion Section A
+
 
             #region Mirror Array Task
+
             int h = random.Next(3, 8);
             int[][] juggedArray = new int[h][];
             int maxLength = default(int);
@@ -163,6 +175,7 @@ namespace ArrayInCSharp
                 Console.WriteLine();
             }
             Console.WriteLine();
+
             int[,] mirroredArray = new int[h, maxLength * 2];
 
             for (int i = 0; i < juggedArray.Length; i++)
@@ -197,7 +210,7 @@ namespace ArrayInCSharp
                 }
                 Console.WriteLine();
             }
-
+ 
             #endregion
 
             Console.ReadLine();
@@ -207,6 +220,8 @@ namespace ArrayInCSharp
         {
             if(left < right)
             {
+                counter++;
+                Console.WriteLine("Counter = " + counter);
                 int midPoint = left + (right - left) / 2;
                 if (array[midPoint] == value)
                 {
